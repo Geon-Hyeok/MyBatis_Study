@@ -2,10 +2,10 @@
 <%@page import="xyz.itwill.dto.MyCommentUser2"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
-	List<MyCommentUser2> commentUserList=MyCommentDAO.getDAO().selectCommentUserList2();
-%>    
+List<MyCommentUser2> commentUserList = MyCommentDAO.getDAO().selectCommentUserList2();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +23,21 @@ td {
 	padding: 3px;
 }
 
-.no { width: 100px; }
-.name { width: 150px; }
-.content { width: 250px; }
-.date { width: 200px; }
+.no {
+	width: 100px;
+}
+
+.name {
+	width: 150px;
+}
+
+.content {
+	width: 250px;
+}
+
+.date {
+	width: 200px;
+}
 </style>
 </head>
 <body>
@@ -39,24 +50,30 @@ td {
 			<td class="content">게시글내용</td>
 			<td class="date">게시글작성일</td>
 		</tr>
-		<% for(MyCommentUser2 commentUser : commentUserList) { %>
+		<%
+		for (MyCommentUser2 commentUser : commentUserList) {
+		%>
 		<tr>
-			<td><%=commentUser.getComment().getCommentNo() %></td>
+			<td><%=commentUser.getComment().getCommentNo()%></td>
 			<%-- <td><%=commentUser.getUser().getUserName()%>[<%=commentUser.getComment().getCommentId() %>]</td> --%>
-			<td><%=commentUser.getUser().getUserName()%>[<%=commentUser.getUser().getUserId() %>]</td>
+			<td><%=commentUser.getUser().getUserName()%>[<%=commentUser.getUser().getUserId()%>]</td>
 			<%-- <td><%=commentUser.getComment().getCommentContent() %></td> --%>
 			<td>
-				<a href="commentReplySelect1.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>">
-					<%=commentUser.getComment().getCommentContent() %>
-				</a>
+				<%-- <a href="commentReplySelect1.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>"> --%>
+				<%-- <a href="commentReplySelect2.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>"> --%>
+				<a
+				href="commentReplyUserSelect.jsp?commentNo=<%=commentUser.getComment().getCommentNo()%>">
+					<%=commentUser.getComment().getCommentContent()%>
+			</a>
 			</td>
-			<td><%=commentUser.getComment().getCommentDate() %></td>
+			<td><%=commentUser.getComment().getCommentDate()%></td>
 		</tr>
-		<% } %>
+		<%
+		}
+		%>
 	</table>
 </body>
 </html>
-
 
 
 
